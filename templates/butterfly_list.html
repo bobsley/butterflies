@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rare butterfly</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><b>Butterfly</b></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'index' %}">General information</a></li>
+            <li class="active"><a href="{% url 'butterfly_list' %}">Rare butterfly<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Rare butterfly</b></i></h1>
+        <p>Here are rare species of butterflies.</p>
+        <table class="table" border=2>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Name</th>
+              <th>Habitat</th>
+              <th>Red Book</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><a href="{% url 'morpho_rhetenor' %}">Morpho rhetenor</a></td>
+              <td>Dense tropical forests</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Brahmaea wallichii</td>
+              <td>The coastal forest</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Iphiclides podalirius</td>
+              <td>Eastern Europe</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Parnassius apollo</td>
+              <td>Warmed meadows and edge of the forest, glade</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Mimathyma schrenckii (or Amuriana schenckii)</td>
+              <td>Tropics</td>
+              <td>Yes</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>All rare butterflies that you see on our website, are an endangered species of animals of the planet Earth. Therefore, accidentally saw them anywhere else, just enjoy this great natural creation in full, because the second such case may be.
+        </p>
+      </div>
+    </div>
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>
