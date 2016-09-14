@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'list_of_butterflies',
     'polls',
+    'quadratic'
 )
 
 MIDDLEWARE_CLASSES = (
