@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>General information</title>
+    <title>Главная</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -19,15 +19,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>Butterfly</b></a>
+          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">General information<span class="sr-only">(current)</span></a></li>
-            <li><a href="{% url 'butterfly_list' %}">Rare butterfly</a></li>
-            <li><a href="{% url 'polls:index' %}">Polls</a></li>
-            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li class="active"><a href="{% url 'index' %}">Главная<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'butterfly_list' %}">Редкие бабочки</a></li>
+            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -35,9 +35,26 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1><i><b>Butterflies and moths!</b></i></h1>
-        <p>Butterflies and moths play an important role in the natural ecosystem as pollinators and as food in the food chain; conversely, their larvae are considered very problematic to vegetation in agriculture, as their main source of food is often live plant matter. In many species, the female may produce from 200 to 600 eggs, while in others, the number may approach 30,000 eggs in one day. The caterpillars hatching from these eggs can cause damage to large quantities of crops. Many moth and butterfly species are of economic interest by virtue of their role as pollinators, the silk they produce, or as pest species.</p>
-        <p><a class="btn btn-primary btn-lg" href="https://en.wikipedia.org/wiki/Lepidoptera" role="button">Learn more</a></p>
+        <h1><i><b>Коллекционирование бабочек.</b></i></h1>
+        <p>Бабочки являются наиболее популярной группой насекомых для частных коллекционеров и научных работников. Это объясняется огромным количеством видов, большим разнообразием форм, их широким распространением, разнообразием размеров и цветов. Коллекционирование бабочек зародилось давно. Ещё в середине XVIII века английские коллекционеры бабочек называли себя аурелианами — от лат. aureus — «золотой» (намёк на золотистую окраску куколок некоторых бабочек). В середине XIX века в интерьере викторианских домов непременно присутствует застеклённый шкаф, где наряду с раковинами морских моллюсков, окаменелостями и минералами выставлялись и засушенные бабочки.
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="https://ru.wikipedia.org/wiki/Энтомологическая_коллекция" role="button">Узнать больше</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Расписание выставок.</b></i></h1>
+        {%for exhibition  in exhibitions %}
+        <h3><a href="{% url 'contact' %}">{{exhibition.name}}</a></h3>
+        <p>
+        {{exhibition.date}}
+        </p>
+        <p>
+        {{exhibition.short_description}}
+        </p>
+        <hr>
+        {% endfor %}
       </div>
     </div>
 

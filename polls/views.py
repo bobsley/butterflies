@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-
 from polls.models import Choice, Question
 
 
@@ -32,7 +32,7 @@ def vote(request, question_id):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
             'question': p,
-            'error_message': "You didn't select a choice.",
+            'error_message': "Выберите один из варианов.",
         })
     else:
         selected_choice.votes += 1

@@ -6,10 +6,6 @@ from django.views import generic
 
 # Create your views here.
 def quadratic_results(request, a, b, c):
-	#form = QuadraticForm()
-	#a = request.GET.get('a')
-	#b = request.GET.get('b')
-	#c = request.GET.get('c')#.split('/')[0]
 	a = a
 	b = b
 	c = c

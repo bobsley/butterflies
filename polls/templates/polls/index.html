@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Polls</title>
+    <title>Опрос</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -19,15 +19,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>Butterfly</b></a>
+          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'index' %}">General information</a></li>
-            <li><a href="{% url 'butterfly_list' %}">Rare butterfly</a></li>
-            <li class="active"><a href="{% url 'polls:index' %}">Polls<span class="sr-only">(current)</span></a></li>
-            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'butterfly_list' %}">Редкие бабочки</a></li>
+            <li class="active"><a href="{% url 'polls:index' %}">Опрос<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -42,7 +42,7 @@
             {% endfor %}
           </ul>
         {% else %}
-          <p>No polls are available.</p>
+          <p>Опросы не доступны.</p>
         {% endif %}
       </div>
     </div>
