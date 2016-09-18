@@ -45,13 +45,13 @@
     <div class="container">
       <div class="jumbotron">
         <h1><i><b>Расписание выставок.</b></i></h1>
-        {%for exhibition  in exhibitions %}
-        <h3><a href="{% url 'exhibition_details' exhibition.id %}">{{exhibition.name}}</a></h3>
+        {%for exhib  in exhibitions %}
+        <h3><a href="{% url 'exhibition_details' exhib.id %}">{{exhib.name}}</a></h3>
         <p>
-        {{exhibition.date}}
+        {{exhib.date}}
         </p>
         <p>
-        {{exhibition.short_description}}
+        {{exhib.short_description}}
         </p>
         <hr>
         {% endfor %}
