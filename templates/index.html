@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Главная<span class="sr-only">(current)</span></a></li>
-            <li><a href="{% url 'list_of_collector' %}">Коллекционеры</a></li>
+            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
             <li><a href="{% url 'polls:index' %}">Опрос</a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
@@ -45,16 +45,16 @@
     <div class="container">
       <div class="jumbotron">
         <h1><i><b>Расписание выставок.</b></i></h1>
-        {%for exhibition  in exhibitions %}
-        <h3><a href="{% url 'exhibition_details' exhibition.id %}">{{ exhibition.name }}</a></h3>
-        <p>
-        {{ exhibition.date }}
-        </p>
-        <p>
-        {{ exhibition.short_description }}
-        </p>
-        <hr>
-        {% endfor %}
+        {% if exhibitions %}
+          {%for exhibition  in exhibitions %}
+            <h3><a href="{% url 'exhibition:detail' exhibition.id %}">{{ exhibition.name }}</a></h3>
+            <p>{{ exhibition.date }}</p>
+            <p>{{ exhibition.short_description }}</p>
+            <hr>
+          {% endfor %}
+        {% else %}
+          <p>В ближайшее время, выставки не планируются</p>
+        {% endif %}
       </div>
     </div>
 

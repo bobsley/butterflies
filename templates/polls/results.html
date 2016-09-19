@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'list_of_collector' %}">Колекционеры</a></li>
+            <li><a href="{% url 'collector:list' %}">Колекционеры</a></li>
             <li><a href="{% url 'polls:index' %}">Опрос</a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
@@ -36,15 +36,12 @@
     <div class="container">
       <div class="jumbotron">
         <h1>{{ question.question_text }}</h1>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-        <form action="{% url 'polls:vote' question.id %}" method="post">
-          {% csrf_token %}
+        <ul>
           {% for choice in question.choice_set.all %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
           {% endfor %}
-          <input type="submit" value="Vote" />
-        </form>
+        </ul>
+        <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
       </div>
     </div>
 

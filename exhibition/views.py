@@ -4,7 +4,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
-from exhibition.models import Collector, Collection, Exhibition
+from exhibition.models import Exhibition, Collection
+from sponsors.models import Sponsor
 
 # Create your views here.
 def list_of_exhibition(request):
@@ -19,16 +20,11 @@ def list_of_exhibition(request):
 			exhibit.append(exhibition)
 	return render(request, 'index.html', {'exhibitions': exhibit})
 
-def exhibition_details(request, num):
+def detail(request, num):
 	num=num
 	exhibition = Exhibition.objects.get(id=num)
-	return render(request, 'exhibition_details.html', {'exhibition': exhibition})
-
-def list_of_collector(request):
-	collectors = Collector.objects.all()
-	return render(request, 'collector_list.html', {'collectors': collectors})
-
-def collector_details(request, num):
-	num=num
-	collector = Collector.objects.get(id=num)
-	return render(request, 'collector_details.html', {'collector': collector})
+	#collection = Collection.objects.values('name').get(exhibition__id=num)
+	collection = Collection.objects.get(exhibition__id=num)
+	sponsor = Sponsor.objects.get(sponsor_exhibition__id=num)
+	assistant = Sponsor.objects.get(assistant_exhibition__id=num)
+	return render(request, 'exhibition/detail.html', {'exhibition': exhibition, 'collection': collection, 'sponsor': sponsor, 'assistant': assistant})

@@ -7,8 +7,5 @@ from django.views import generic
 def contact(request):
 	return render(request, 'contact.html')
 
-def collector_list(request):
-	return render(request, 'collector_list.html')
-
 def morpho_rhetenor(request):
 	return render(request, 'morpho_rhetenor.html')
