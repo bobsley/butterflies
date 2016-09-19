@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contacts</title>
+    <title>{{collector.surname}}</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -25,9 +25,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'collector:list' %}">Колекционеры</a></li>
+            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
             <li><a href="{% url 'polls:index' %}">Опрос</a></li>
-            <li class="active"><a href="{% url 'contact' %}">Контакты<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -35,13 +35,46 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1><i><b>Our contacts</b></i></h1>
-          <ul class="list-group">
-            <p class="list-group-item list-group-item-success"><b>Name:</b> Yevheniia Smyrnova</p>
-            <p class="list-group-item list-group-item-info"><b>Skype:</b> Zhenya1393</p>
-            <p class="list-group-item list-group-item-warning"><b>Email:</b> ZhenyaSmirnova@ukr.net</p>
-            <p class="list-group-item list-group-item-danger"><b>Phone:</b> 099-404-5148</p>
-          </ul>
+        <h1><i><b>{{ sponsor.user_full_name }}</b></i></h1>
+        
+        <h3><b>Основная информация:</b></h3>
+        <table class="table" border=0>
+          <tbody>
+            <tr>
+              <td>День Рождения:</td>
+              <td>{{ sponsor.date_of_birth }}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Пол:</td>
+              <td>{{ sponsor.get_gender_display }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3><b>Контактная информация:</b></h3>
+        <table class="table" border=0>
+          <tbody>
+            <tr>
+              <td>Моб. телефон:</td>
+              <td>{{ sponsor.phone }}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Skype:</td>
+              <td>{{ sponsor.skype }}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Адрес:</td>
+              <td>{{ sponsor.address }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><b>{{ sponsor.description }}</b></p>
       </div>
     </div>
 

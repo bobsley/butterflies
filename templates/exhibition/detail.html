@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'butterfly_list' %}">Редкие бабочки</a></li>
+            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
             <li><a href="{% url 'polls:index' %}">Опрос</a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
@@ -35,19 +35,21 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1><i><b>{{exhibition.name}}</b></i></h1>
+        <h1><i><b>{{ exhibition.name }}</b></i></h1>
         <p>
-        {{exhibition.short_description}}
+        {{ exhibition.short_description }}
         </p>
 
         <p>
-        Выставка состоится {{exhibition.date.day}}.{{exhibition.date.month}}.{{exhibition.date.year}} в {{exhibition.date.hour}}:{{exhibition.date.minute}}.
+        Выставка состоится {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }} в {{ exhibition.date.hour }}:{{ exhibition.date.minute }}.
         </p>
-
-        <p>
-        Будут представлены колекции: 
-        <i><b>НЕ МОГУ ВЫТАЩИТЬ КОЛЛЕКЦИИ</b></i>
-        </p>
+        
+        <h2><i><b>Будут представлены колекции:</b></i></h2>
+        <p>{{ collection.name }}</p>
+        
+        <h2><i><b>Организаторы:</b></i></h2>
+        <p>Спонсор: <a href="{% url 'sponsor:detail' sponsor.id %}">{{ sponsor.user_full_name }}</a></p>
+        <p>Ассистент: <a href="{% url 'sponsor:detail' assistant.id %}">{{ assistant.user_full_name }}</a></p>
       </div>
     </div>
 

@@ -19,15 +19,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>Butterfly</b></a>
+          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'index' %}">General information</a></li>
-            <li><a href="{% url 'butterfly_list' %}">Rare butterfly</a></li>
-            <li><a href="{% url 'polls:index' %}">Polls</a></li>
-            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'collector:list' %}">Колекционеры</a></li>
+            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

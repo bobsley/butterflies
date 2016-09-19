@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Опрос</title>
+    <title>Polls</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -25,8 +25,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'butterfly_list' %}">Редкие бабочки</a></li>
-            <li class="active"><a href="{% url 'polls:index' %}">Опрос<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'collector:list' %}">Колекционеры</a></li>
+            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -35,15 +35,16 @@
 
     <div class="container">
       <div class="jumbotron">
-        {% if latest_question_list %}
-   		  <ul>
-   		    {% for question in latest_question_list %}
-            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>Опросы не доступны.</p>
-        {% endif %}
+        <h1>{{ question.question_text }}</h1>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+          {% csrf_token %}
+          {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+          {% endfor %}
+          <input type="submit" value="Vote" />
+        </form>
       </div>
     </div>
 
@@ -51,7 +52,3 @@
     <script src="../static/js/bootstrap.min.js"></script>
   </body>
 </html>
-
-
-
-

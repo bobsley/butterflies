@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'polls',
     'quadratic',
     'exhibition',
+    'collector',
+    'sponsors',
 )
 
 MIDDLEWARE_CLASSES = (
