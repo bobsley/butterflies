@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{collector.surname}}</title>
+    <title>Коллекционеры</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -25,8 +25,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
-            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
+            <li class="active"><a href="{% url 'collector:list' %}">Коллекционеры<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'polls:index' %}">Опросы</a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -35,50 +35,28 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1><i><b>{{ collector.surname }} {{ collector.name }}</b></i></h1>
-        
-        <h3><b>Основная информация:</b></h3>
+        <h1><i><b>Коллекционеры</b></i></h1>
         <table class="table" border=0>
-          <tbody>
+          <thead>
             <tr>
-              <td>День Рождения:</td>
-              <td>{{ collector.date_of_birth }}</td>
+              <th>ФИО</th>
+              <th>Телефон</th>
+              <th>Коллекции</th>
             </tr>
-          </tbody>
-        </table>
-        
-        <h3><b>Контактная информация:</b></h3>
-        <table class="table" border=0>
+          </thead>
+          {%for collector  in collectors %}
           <tbody>
             <tr>
-              <td>Моб. телефон:</td>
+              <td><a href="{% url 'collector:detail' collector.id %}">{{ collector.surname }} {{ collector.name }}</a></td>
               <td>{{ collector.phone }}</td>
+              <td>*******</td>
             </tr>
           </tbody>
-          <tbody>
-            <tr>
-              <td>Email:</td>
-              <td>{{ collector.email }}</td>
-            </tr>
-          </tbody>
-          {% if collector.skype %}
-          <tbody>
-            <tr>
-              <td>Skype:</td>
-              <td>{{ collector.skype }}</td>
-            </tr>
-          </tbody>
-          {% endif %}
-          {% if collector.address %}
-          <tbody>
-            <tr>
-              <td>Адрес:</td>
-              <td>{{ collector.address }}</td>
-            </tr>
-          </tbody>
-          {% endif %}
+          {% endfor %}
         </table>
-        <h3><b>Коллекции:</b></h3>
+        <p>
+        Наша природа создала бабочек настолько прекрасными насекомыми, что они способны радовать человеческий глаз и после смерти.  Коллекционирование бабочек, или лепидоптерофилия сегодня становится все более и более распространенным хобби. Большинство собирает коллекции этих прекрасных насекомых на стенах, некоторые делают картины из их крыльев, а кто-то предпочитает наслаждаться красотой живых бабочек и разводит их самостоятельно. Это занятие приносит массу удовольствия, благодаря ему человек соприкасается с прекрасным.
+        </p>
       </div>
     </div>
 

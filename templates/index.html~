@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
+          <a class="navbar-brand" href="{% url '404' %}"><b>Бабочки</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -49,7 +49,7 @@
         
         {% if exhibitions %}
           {% for exhibition  in exhibitions %}
-            <h3><a href="{% url 'exhibition_details' exhibition.id %}">{{ exhibition.name }}</a></h3>
+            <h3><a href="{% url 'exhibition:detail' exhibition.id %}">{{ exhibition.name }}</a></h3>
             <p>{{ exhibition.date }}</p>
             <p>{{ exhibition.short_description }}</p>
             <hr>
