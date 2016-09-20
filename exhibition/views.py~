@@ -39,14 +39,15 @@ def list_of_exhibition(request):
 
 
 def detail(request, num):
-	num=num
+	#num=num
 	exhibition = Exhibition.objects.get(id=num)
 
-	return render(request, 'exhibition_details.html', {'exhibition': exhibition})
+	#return render(request, 'exhibition_details.html', {'exhibition': exhibition})
 
 	#collection = Collection.objects.values('name').get(exhibition__id=num)
-	collection = Collection.objects.get(exhibition__id=num)
-	sponsor = Sponsor.objects.get(sponsor_exhibition__id=num)
-	assistant = Sponsor.objects.get(assistant_exhibition__id=num)
-	return render(request, 'exhibition/detail.html', {'exhibition': exhibition, 'collection': collection, 'sponsor': sponsor, 'assistant': assistant})
+	collections = Collection.objects.filter(exhibition__pk=num)
+	sponsors = Sponsor.objects.filter(sponsor_exhibition__pk=num)
+	assistants = Sponsor.objects.filter(assistant_exhibition__pk=num)
+	
+	return render(request, 'exhibition/detail.html', {'exhibition': exhibition, 'collections': collections, 'sponsors': sponsors, 'assistants': assistants})
 
