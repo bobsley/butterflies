@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{collector.surname}}</title>
+    <title>{{exhibition.name}}</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="404"><b>Бабочки</b></a>
+          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,50 +35,27 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1><i><b>{{ collector.surname }} {{ collector.name }}</b></i></h1>
-        
-        <h3><b>Основная информация:</b></h3>
-        <table class="table" border=0>
-          <tbody>
-            <tr>
-              <td>День Рождения:</td>
-              <td>{{ collector.date_of_birth }}</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <h3><b>Контактная информация:</b></h3>
-        <table class="table" border=0>
-          <tbody>
-            <tr>
-              <td>Моб. телефон:</td>
-              <td>{{ collector.phone }}</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <td>Email:</td>
-              <td>{{ collector.email }}</td>
-            </tr>
-          </tbody>
-          {% if collector.skype %}
-          <tbody>
-            <tr>
-              <td>Skype:</td>
-              <td>{{ collector.skype }}</td>
-            </tr>
-          </tbody>
-          {% endif %}
-          {% if collector.address %}
-          <tbody>
-            <tr>
-              <td>Адрес:</td>
-              <td>{{ collector.address }}</td>
-            </tr>
-          </tbody>
-          {% endif %}
-        </table>
-        <h3><b>Коллекции:</b></h3>
+        <h1><i><b>{{ exhibition.name }}</b></i></h1>
+        <p>
+        {{ exhibition.short_description }}
+        </p>
+
+        <p>
+        Выставка состоится {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }} в {{ exhibition.date.hour }}:{{ exhibition.date.minute }}.
+        </p>
+        {% if collections %}
+        <h2><i><b>Будут представлены колекции:</b></i></h2>
+				{% for collection in collections %}
+        <p>{{ collection.name }}</p>
+				{% endfor %}
+        {% endif %}
+        <h2><i><b>Организаторы:</b></i></h2>
+				{% for sponsor in sponsors %}
+        <p>Спонсор: <a href="{% url 'sponsor:detail' sponsor.id %}">{{ sponsor.user_full_name }}</a></p>
+				{% endfor %}
+				{% for assistant in assistants %}
+        <p>Ассистент: <a href="{% url 'sponsor:detail' assistant.id %}">{{ assistant.user_full_name }}</a></p>
+				{% endfor %}
       </div>
     </div>
 
