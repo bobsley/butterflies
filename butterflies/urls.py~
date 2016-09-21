@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^quadratic/', include('quadratic.urls', namespace="quadratic")),
     url(r'^admin/', include(admin.site.urls)),
-	url(r'$', custom_page_not_found, name='404'),
+	url(r'^$', custom_page_not_found, name='404'),
 )
 
 

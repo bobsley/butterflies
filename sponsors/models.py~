@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Sponsor(models.Model):
 	user = models.OneToOneField(User, verbose_name=u'Пользователь')
 	date_of_birth = models.DateField(u'День Рождения')
-	gender = models.CharField(u'Пол', choices=(('M',u'Мужской'), ('F',u'Женский')), max_length=15)
+	gender = models.CharField(name=u'Пол', choices=(('M',u'Мужской'), ('F',u'Женский')), max_length=15)
 	phone = models.CharField(u'Телефон', max_length=15)
 	address = models.CharField(u'Адрес', max_length=55)
 	skype = models.CharField('Skype', max_length=55)

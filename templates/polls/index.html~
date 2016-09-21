@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Polls</title>
+    <title>Опрос</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   </head>
 
@@ -19,14 +19,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="404"><b>Бабочки</b></a>
+          <a class="navbar-brand" href="#"><b>Бабочки</b></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Главная</a></li>
             <li><a href="{% url 'collector:list' %}">Колекционеры</a></li>
-            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
+            <li class="active"><a href="{% url 'polls:index' %}">Опрос<span class="sr-only">(current)</span></a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -35,13 +35,15 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>{{ question.question_text }}</h1>
-        <ul>
-          {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-          {% endfor %}
-        </ul>
-        <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+        {% if latest_question_list %}
+   		  <ul>
+   		    {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Опросы не доступны.</p>
+        {% endif %}
       </div>
     </div>
 
@@ -49,3 +51,7 @@
     <script src="../static/js/bootstrap.min.js"></script>
   </body>
 </html>
+
+
+
+
