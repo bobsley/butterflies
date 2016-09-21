@@ -37,7 +37,7 @@
       <div class="jumbotron">
         <h1><i><b>{{ collector.surname }} {{ collector.name }}</b></i></h1>
         
-        <h3><b>Основная информация:</b></h3>
+        <h2><b>Основная информация:</b></h2>
         <table class="table" border=0>
           <tbody>
             <tr>
@@ -47,7 +47,7 @@
           </tbody>
         </table>
         
-        <h3><b>Контактная информация:</b></h3>
+        <h2><b>Контактная информация:</b></h2>
         <table class="table" border=0>
           <tbody>
             <tr>
@@ -78,7 +78,14 @@
           </tbody>
           {% endif %}
         </table>
-        <h3><b>Коллекции:</b></h3>
+
+        {% if collections %}
+          <h2><b>Kоллекции:</b></h2>
+          {% for collection in collections %}
+            <li><p><i>{{ collection.name }}</i></p></li>
+            <p>{{ collection.description }}</p>
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
 

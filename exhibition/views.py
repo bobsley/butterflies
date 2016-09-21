@@ -26,24 +26,9 @@ def list_of_exhibition(request):
 			exhibitions.append(exhibition)
 	return render(request, 'index.html', {'exhibitions': exhibitions})
 
-#	exhibitions = Exhibition.objects.all()
-#	exhibit = []
-#	for exhibition in exhibitions:
-#		if exhibition.date.year > datetime.now().year:
-	#		exhibit.append(exhibition)
-	#	if exhibition.date.month > datetime.now().month and exhibition.date.year == datetime.now().year:
-	#		exhibit.append(exhibition)
-	#	if exhibition.date.day >= datetime.now().day and exhibition.date.month == datetime.now().month and exhibition.date.year == datetime.now().year:
-	#		exhibit.append(exhibition)
-	#return render(request, 'index.html', {'exhibitions': exhibit})
-
 
 def detail(request, num):
-	#num=num
 	exhibition = Exhibition.objects.get(id=num)
-
-	#return render(request, 'exhibition_details.html', {'exhibition': exhibition})
-
 	#collection = Collection.objects.values('name').get(exhibition__id=num)
 	collections = Collection.objects.filter(exhibition__pk=num)
 	sponsors = Sponsor.objects.filter(sponsor_exhibition__pk=num)

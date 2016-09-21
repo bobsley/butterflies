@@ -41,7 +41,6 @@
             <tr>
               <th>ФИО</th>
               <th>Телефон</th>
-              <th>Коллекции</th>
             </tr>
           </thead>
           {%for collector  in collectors %}
@@ -49,7 +48,6 @@
             <tr>
               <td><a href="{% url 'collector:detail' collector.id %}">{{ collector.surname }} {{ collector.name }}</a></td>
               <td>{{ collector.phone }}</td>
-              <td>*******</td>
             </tr>
           </tbody>
           {% endfor %}

@@ -44,10 +44,12 @@
         Выставка состоится {{ exhibition.date.day }}.{{ exhibition.date.month }}.{{ exhibition.date.year }} в {{ exhibition.date.hour }}:{{ exhibition.date.minute }}.
         </p>
         {% if collections %}
-        <h2><i><b>Будут представлены колекции:</b></i></h2>
-				{% for collection in collections %}
-        <p>{{ collection.name }}</p>
-				{% endfor %}
+          <h2><i><b>Будут представлены коллекции:</b></i></h2>
+				  {% for collection in collections %}
+            <li><p><i>{{ collection.name }}</i></p></li>
+            <p>Коллекционер - {{ collection.collector }}</p>
+            <p>{{ collection.description }}</p>
+				  {% endfor %}
         {% endif %}
         <h2><i><b>Организаторы:</b></i></h2>
 				{% for sponsor in sponsors %}
