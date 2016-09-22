@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+
+
 {% load staticfiles %}
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Главная</title>
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-  </head>
 
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="404"><b>Бабочки</b></a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">Главная<span class="sr-only">(current)</span></a></li>
-            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
-            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
-            <li><a href="{% url 'contact' %}">Контакты</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+{% block title %}Главная{% endblock%}
 
+
+{% block nav_class_index %}active{% endblock%}
+
+
+{% block content %}
     <div class="container">
       <div class="jumbotron">
         <h1><i><b>Коллекционирование бабочек.</b></i></h1>
@@ -59,58 +37,4 @@
         {% endif %}
       </div>
     </div>
-
-    <div class="container">
-      <div class="jumbotron">
-        <h1><i><b>Интересные факты о бабочках.</b></i></h1>
-        <p>
-        Часто в названиях бабочек встречаются имена древнегреческих богов и героев, потому что знаменитый швед Карл Линей, создатель первой научной систематики животных, относился к бабочкам по-особенному и считал, что они такие же яркие и прекрасные, как и герои мифов.
-        </p>
-        <div class="col-xs-9 col-md-12">
-          <a href="../static/images/general_1.jpg" class="thumbnail">
-            <img src="../static/images/general_1.jpg" alt="...">
-          </a>
-        </div>
-        <p>
-        Самая крупная ночная бабочка в мире - Attacus Altas. Размах ее крыльев более 30 см. и ее часто ошибочно принимают за птицу.
-        </p>
-        <div class="col-xs-9 col-md-12">
-          <a href="../static/images/general_2.jpg" class="thumbnail">
-            <img src="../static/images/general_2.jpg" alt="...">
-          </a>
-        </div>
-        <p>
-        За свою короткую жизнь самка бабочки может отложить более 1000 яиц.
-        </p>
-        <div class="col-xs-9 col-md-12">
-          <a href="../static/images/general_3.jpg" class="thumbnail">
-            <img src="../static/images/general_3.jpg" alt="...">
-          </a>
-        </div>
-
-        <p>
-        Бабочки рождаются, чтобы умереть, дав жизнь новому поколению. Большинство из них живет всего несколько дней, за исключением Monarch, который может жить до шести месяцев.
-        </p>
-        <div class="col-xs-9 col-md-12">
-          <a href="../static/images/general_4.jpg" class="thumbnail">
-            <img src="../static/images/general_4.jpg" alt="...">
-          </a>
-        </div>
-        <p>
-        Если в Европе только наслаждаются красотой бабочек, то в Китае, Южной Америке и Индии их умеют готовить и с удовольствием едят.
-        </p>
-        <div class="col-xs-9 col-md-12">
-          <a href="../static/images/general_5.jpg" class="thumbnail">
-            <img src="../static/images/general_5.jpg" alt="...">
-          </a>
-        </div>
-        <p>
-        Настоящими полярницами можно назвать несколько видов бабочек, которые обитают на канадском острове Королевы Елизаветы в 750 километрах от Северного полюса.
-        </p>
-      </div>
-    </div>
-
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-  </body>
-</html>
+{% endblock content %}

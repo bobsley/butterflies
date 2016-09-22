@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+
+
 {% load staticfiles %}
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{collector.surname}}</title>
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-  </head>
 
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="404"><b>Бабочки</b></a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'collector:list' %}">Коллекционеры</a></li>
-            <li><a href="{% url 'polls:index' %}">Опрос</a></li>
-            <li><a href="{% url 'contact' %}">Контакты</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+{% block title %}{{collector.surname}}{% endblock%}
 
+
+{% block nav_class_index %}active{% endblock%}
+
+
+{% block content %}
     <div class="container">
       <div class="jumbotron">
         <h1><i><b>{{ sponsor.user_full_name }}</b></i></h1>
@@ -77,8 +55,4 @@
         <p><b>{{ sponsor.description }}</b></p>
       </div>
     </div>
-
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-  </body>
-</html>
+{% endblock content %}
