@@ -13,33 +13,26 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <p><h1><b><i>Квадратные уравнения a*x^2 + b*x + c = 0</i></b></h1></p>
+          <h1><b><i><center>Квадратные уравнения a*x^2 + b*x + c = 0</center></i></b></h1>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </nav>
 
     <div class="container">
       <div class="jumbotron">
-        <li><b>a = {{a}}</b></li>
-        <p><strong>{{error_message_a}}</strong></p>
-        <li><b>b = {{b}}</b></li>
-        <p><strong>{{error_message_b}}</strong></p>
-        <li><b>c = {{c}}</b></li>
-        <p><strong>{{error_message_c}}</strong></p>
+        <form method="get">
+        {{ form.as_p }}
+        <input type="submit" value="Решить" />
+        </form>
       </div>
     </div>
-    {% if message_discr %}
+
+    {% if message %}
       <div class="container">
         <div class="jumbotron">
-          <p>{{message_discr}}</p>
+          <h2><b><i><center>Решение</center></i></b></h2>
+          <p>{{d}}</p>
           <p>{{message}}</p>
-          {% if roots %}<p>{{roots}}</p>{% endif %}
         </div>
       </div>
     {% endif %}
