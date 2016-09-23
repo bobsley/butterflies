@@ -1,0 +1,29 @@
+{% extends 'exhibition/base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Редоктирование данных о выставке</b></i></h1>
+
+        {% if messages %}
+          <ul class="list-group">
+          {% for message in messages %}
+            <p class="list-group-item list-group-item-success">
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> {{ message }}</p>
+          {% endfor %}
+          </ul>
+        {% endif %}
+
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input class="btn btn-primary" type="submit" value="Сохранить" />
+        </form>
+        
+      </div>
+    </div>
+{% endblock content %}

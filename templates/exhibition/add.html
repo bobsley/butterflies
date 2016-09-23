@@ -1,0 +1,19 @@
+{% extends 'exhibition/base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Создание новой выставки</b></i></h1>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input class="btn btn-primary" type="submit" value="Добавить" />
+          <input class="btn btn-default" type="reset" value="Очистить" />
+        </form>
+      </div>
+    </div>
+{% endblock content %}
