@@ -1,0 +1,23 @@
+{% extends 'collector/base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h1><i><b>Удаление данных коллекционера</b></i></h1>
+
+        <p class="list-group-item list-group-item-warning">
+        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Коллекционер {{collector.surname}} {{collector.name}} будет удален! <span class="glyphicon glyphicon-alert" aria-hidden="true"></span></p>
+        <hr>
+
+        <form method="post">
+          {% csrf_token %}
+          <input class="btn btn-primary" type="submit" value="Удалить" />
+        </form>
+        
+      </div>
+    </div>
+{% endblock content %}

@@ -7,6 +7,9 @@ from django.views import generic
 def contact(request):
 	return render(request, 'contact.html')
 
+def news(request):
+	return render(request, 'news.html')
+
 def morpho_rhetenor(request):
 	return render(request, 'morpho_rhetenor.html')
 
