@@ -1,7 +1,7 @@
 {% extends 'collector/base.html' %}
 
 
-{% block title %}Коллекционеры{% endblock%}
+{% block title %}Создание новой коллекции{% endblock%}
 
 
 {% load staticfiles %}
@@ -10,7 +10,7 @@
 {% block content %}
     <div class="container">
       <div class="jumbotron">
-        <h1><i><b>Создание новой коллекции</b></i></h1>
+        <h1 align="center"><i><b>Создание новой коллекции</b></i></h1>
         <form method="post">
           {% csrf_token %}
           {{ form.as_p }}

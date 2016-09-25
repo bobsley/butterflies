@@ -8,6 +8,11 @@ class CollectorModelForm(forms.ModelForm):
 	class Meta:
 		model = Collector
 
+	fieldsets = [
+		(u'Основная информация',   ['name', 'surname', 'date_of_birth']),
+		(u'Контактная информация', ['email', 'phone', 'address', 'skype']),
+	]
+
 class CollectionModelForm(forms.ModelForm):
 	class Meta:
 		model = Collection
