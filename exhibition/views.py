@@ -111,6 +111,10 @@ class ExhibitionDeleteView(DeleteView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ExhibitionDeleteView, self).get_context_data(**kwargs)
+		context['title'] = "Удаление выставки"
+		return context
+	def delete(self, request, *args, **kwargs):
+		ret_msg = super(CourseDeleteView, self).delete(request, *args, **kwargs)
 		mes = u'Высавка {} была удалена.'.format(self.object.name)
 		messages.success(self.request, mes)
-		return context
+		return ret_msg
