@@ -115,14 +115,14 @@ class CollectorDeleteView(DeleteView):
 		messages.success(self.request, mes)
 		return ret_msg
 
-def add_collection(request, pk):
-	collector = Collector.objects.get(id=pk)
-	if request.method =='POST':
-		form = CollectionModelForm(request.POST)
-		if form.is_valid():
-			application = form.save()
-			mes = u'Коллекция {} успешно добавлена.'.format(application.name)
-			messages.success(request, mes)
+#def add_collection(request, pk):
+#	collector = Collector.objects.get(id=pk)
+#	if request.method =='POST':
+#		form = CollectionModelForm(request.POST)
+#		if form.is_valid():
+#			application = form.save()
+#			mes = u'Коллекция {} успешно добавлена.'.format(application.name)
+#			messages.success(request, mes)
 #			return redirect('collector:list')
 #	else:
 #		form = CollectionModelForm(initial={'collector': collector})
