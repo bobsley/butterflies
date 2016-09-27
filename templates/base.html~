@@ -19,8 +19,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-					<!--<li class="{% block nav_class_404 %}{% endblock%}"> -->
-          <a class="navbar-brand"  href="news"><b>Бабочки</b></a><!--</li> -->
+					<li class="{% block nav_class_404 %}{% endblock%}">
+          <a class="navbar-brand"  href="news"><b>Бабочки</b></a></li>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
